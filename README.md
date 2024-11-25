@@ -8,4 +8,5 @@ desenvolvimento de aplicações orientadas a objetos.
 - Capacitar o aluno a estruturar uma aplicação orientada a objetos de forma adequada
 (boas práticas de Engenharia se Software)
 
-#### **Professor:** Delano Medeiros Beder
+#### **Professor:** Delano Medeiros Beder 
+[Github](https://github.com/delanobeder?tab=repositories)
