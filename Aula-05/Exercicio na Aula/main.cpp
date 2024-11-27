@@ -28,23 +28,27 @@ private:
 class Professor : public Pessoa
 {
 public: 
-    Professor( string nome, int cpf, float salario, string nomeUniversidade, string siglaUniversidade ) :
+    Professor(string nome, int cpf, float salario,  Universidade& uni) :
         Pessoa(nome, cpf), 
         salario(salario), 
-        universidade(nomeUniversidade, siglaUniversidade) {};
+        universidade(uni) {};
 
     void imprime() {
         cout << "\nNome: " << this->nome << ", CPF: " << this->cpf << ", Salario: " << this->salario << "\nUniversidade: " << this->universidade.getNome() << " - " << this->universidade.getSigla() << endl << endl;
     }
 private: 
     float salario;
-    Universidade universidade;
+    Universidade& universidade;
 
 };
 
 int main (void)
 {
-    Professor p1 ("Fulano", 1234567891, 1100.50, "Universidade Federal de São Carlos", "UFSCAR");
-    p1.imprime();
+    Universidade un1 ("Universidade Federal de São Carlos", "UFSCAR");
+    Universidade un2 ("Universidade Federal dos Bom de Cama", "UFBC");
+    Professor p1 ("Fulano", 1234567891, 8300.50, un1);
+    Professor p2 ("Rei Dudinha", 69696969, 1000000, un2);
+
+    p2.imprime();
 
 }
