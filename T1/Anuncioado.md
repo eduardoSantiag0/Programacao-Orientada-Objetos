@@ -1,0 +1,7 @@
+- Organizem suas classes no namespace poo
+- Classe Pessoa 
+- Classe Estudante
+- Classe Professor
+- Classe DataHorario
+- Classe Sessao
+- 
