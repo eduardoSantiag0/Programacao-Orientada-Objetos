@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/superdu/1Du/UFSCar/POO",
-      "program": "/home/superdu/1Du/UFSCar/POO/build/Debug/outDebug",
+      "cwd": "/home/superdu/1Du/UFSCar/POO/Aula-08/Exercicio na aula",
+      "program": "/home/superdu/1Du/UFSCar/POO/Aula-08/Exercicio na aula/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
