@@ -6,8 +6,8 @@ int main (void)
 {
     // Criando objetos de DataHorario e Pessoa para testes
     DataHorario dh1(10, 12, 2024, 18, 30, 0); // Data e horário da sessão
-    Pessoa pessoa1("João Silva", "123.456.789-00");
-    Pessoa pessoa2("Maria Oliveira", "987.654.321-00");
+    Pessoa pessoa1("Fulano", "123.456.789-00");
+    Pessoa pessoa2("Ciclana", "987.654.321-00");
 
     // Criando uma sessão
     Sessao sessao("Cinema: A Volta dos que Não Foram", dh1);

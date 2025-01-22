@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/superdu/1Du/UFSCar/POO",
-      "program": "/home/superdu/1Du/UFSCar/POO/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "d:/11F0/Sync/1Santiago11/Ufscar/Ufscar 2024-2/POO/Programacao-Orientada-Objetos/T2",
+      "program": "d:/11F0/Sync/1Santiago11/Ufscar/Ufscar 2024-2/POO/Programacao-Orientada-Objetos/T2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

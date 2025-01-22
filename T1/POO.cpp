@@ -1,34 +1,31 @@
 /*******************************************************************/
 /*              Eduardo Santiago Rosalin - 802539                  */
-//                                ._                               */
-//                               |* ;                              */
-//             `*-.              |"":                              */
-//              \  \             |""                               */
-//               .  \            |   :                             */
-//               `   \           |                                 */
-//                \   \          |    ;               +.           */
-//                 .   \         |                   *._`-.        */
-//                 `    \        |     :          .-*'  `. `.      */
-//                 _\    \.__..--**--...L_   _.-*'      .'`*'      */
-//                /  `*-._\   -.       .-*"*+._       .'           */
-//               :        ``*-._*.     \      _J.   .'             */
-//           .-*'`*-.       ;     `.    \    /   `.'               */
-//       .-*'  _.-*'.     .-'       `-.  `-.:   _.'`-.             */
-//    +*' _.-*'      `..-'             `*-. `**'      `-.          */
-//     `*'          .-'      ._            `*-._         `.        */
-//               .-'         `.`-.____..+-**""'         .*"`.      */
-//          ._.-'          _.-*'':$$$;._$              /     `.    */
-//       .-'  `.      _.-*' `*-.__      `"**--..__    :        `.  */
-// .'..-'       \_.-*'                            `"**--..___.-*'  */
-// `. `.    _.-*'                                                  */
-//   `. `:*'                                                       */
-//     `. `.                                                       */
-//       `*                                                        */
+/*                                ._                               */
+/*                               |* ;                              */
+/*             `*-.              |"":                              */
+/*              \  \             |""                               */
+/*               .  \            |   :                             */
+/*               `   \           |                                 */
+/*                \   \          |    ;               +.           */
+/*                 .   \         |                   *._`-.        */
+/*                 `    \        |     :          .-*'  `. `.      */
+/*                 _\    \.__..--**--...L_   _.-*'      .'`*'      */
+/*                /  `*-._\   -.       .-*"*+._       .'           */
+/*               :        ``*-._*.     \      _J.   .'             */
+/*           .-*'`*-.       ;     `.    \    /   `.'               */
+/*       .-*'  _.-*'.     .-'       `-.  `-.:   _.'`-.             */
+/*    +*' _.-*'      `..-'             `*-. `**'      `-.          */
+/*     `*'          .-'      ._            `*-._         `.        */
+/*               .-'         `.`-.____..+-**""'         .*"`.      */
+/*          ._.-'          _.-*'':$$$;._$              /     `.    */
+/*       .-'  `.      _.-*' `*-.__      `"**--..__    :        `.  */
+/* .'..-'       \_.-*'                            `"**--..___.-*'  */
+/* `. `.    _.-*'                                                  */
+/*   `. `:*'                                                       */
+/*     `. `.                                                       */
+/*       `*                                                        */
 /*******************************************************************/
 
-//todo Estudante -> notasSAC()
-//todo Sessao -> convertePoltronaString()
-//todo Sessao -> destructor()
 
 #include <iostream>
 
@@ -61,14 +58,19 @@ namespace poo
     {
     private:
         int ra;
-        double prova1;
-        double prova2;
-        double trabalho1;
-        double trabalho2;
+        double prova1, prova2;
+        double trabalho1, trabalho2;
+
+        bool sac() const
+        {
+            return this->media() >= 5.5 && this->media() < 6; 
+        }
 
     public: 
-        Estudante(string nome, string cpf, int ra, double prova1, double prova2, double trabalho1, double trabalho2) 
-        : Pessoa(nome, cpf), ra(ra), prova1(prova1), prova2(prova2), trabalho1(trabalho1), trabalho2(trabalho2) {};
+        Estudante(string nome, string cpf, int ra, double prova1, double prova2, 
+        double trabalho1, double trabalho2) 
+        : Pessoa(nome, cpf), ra(ra), prova1(prova1), prova2(prova2), 
+        trabalho1(trabalho1), trabalho2(trabalho2) {};
 
         int getRA () const { return this->ra;};
 
@@ -81,24 +83,21 @@ namespace poo
 
         bool aprovado() const
         {
-            return media() >= 6.0;
+            return this->media() >= 6.0;
         }
 
-        bool sac() const
-        {
-            return media() >= 5.5 && media() < 6; 
-        }
 
-        //todo SAC?
         double notaSAC()
         {
+            if (this->sac()) return 12 - this->media();
+            else return 0.0;
         }
 
 
         void imprime() const override
         {
             Pessoa::imprime();
-            cout << "Media: " << media() << endl;
+            cout << "Media: " << this->media() << endl;
         }
     };
 
@@ -125,12 +124,16 @@ namespace poo
     private: 
         int dia, mes, ano, hora, minuto, segundo;
 
-        bool validarData(int dia, int mes, int ano) {
+        bool validarData(int dia, int mes, int ano) 
+        {
             return ano > 0 && mes >= 1 && mes <= 12 && dia >= 1;
         }
 
-        bool validarHorario (int hora, int min, int seg) {
-            return hora >= 0 && hora <= 23 && minuto >= 0 && minuto <= 59 && segundo >= 0 && segundo <= 59;    
+        bool validarHorario (int hora, int min, int seg) 
+        {
+            return hora >= 0 && hora <= 23 
+            && minuto >= 0 && minuto <= 59 
+            && segundo >= 0 && segundo <= 59;    
         }
 
     public: 
@@ -139,7 +142,8 @@ namespace poo
         DataHorario(int dia, int mes, int ano, int hora, int minuto, int segundo) 
         : dia(1), mes(1), ano(1), hora(0), minuto(0), segundo(0) 
         {
-            if (validarData(dia, mes, ano) && validarHorario(hora, minuto, segundo)) {
+            if (validarData(dia, mes, ano) && validarHorario(hora, minuto, segundo)) 
+            {
                 this->dia = dia;
                 this->mes = mes;
                 this->ano = ano;
@@ -163,16 +167,17 @@ namespace poo
 
         void imprime(bool formato12hrs) const 
         {
-            if (formato12hrs) 
-            {
+            if (formato12hrs) {
                 int horaAtualizada = this->hora % 12;
                 if (horaAtualizada == 0) horaAtualizada = 12;
                 string periodo = (hora < 12 ? "AM" : "PM");
 
-                printf("%d/%d/%d - %d:%d:%d %s\n", this->dia, this->mes, this->ano, horaAtualizada, this->minuto, this->segundo, periodo.c_str());
+                printf("%d/%d/%d - %d:%d:%d %s\n", this->dia, this->mes, this->ano, 
+                horaAtualizada, this->minuto, this->segundo, periodo.c_str());
                 
             } else {
-                printf("%d/%d/%d - %d:%d:%d\n", this->dia, this->mes, this->ano, this->hora, this->minuto, this->segundo);
+                printf("%d/%d/%d - %d:%d:%d\n", this->dia, this->mes, this->ano, 
+                this->hora, this->minuto, this->segundo);
             }
         }
 
@@ -181,22 +186,23 @@ namespace poo
             string mes;
             switch (this->mes)
             {
-            case 1: mes = "Janeiro"; break;
-            case 2: mes = "Fevereiro"; break;
-            case 3: mes = "Março"; break;
-            case 4: mes = "Abril"; break;
-            case 5: mes = "Maio"; break;
-            case 6: mes = "Junho"; break;
-            case 7: mes = "Julho"; break;
-            case 8: mes = "Agosto"; break;
-            case 9: mes = "Setembro"; break;
-            case 10: mes = "Outubro"; break;
-            case 11: mes = "Novembro"; break;
-            case 12: mes = "Dezembro"; break;
-            default: break;
+                case 1: mes = "Janeiro"; break;
+                case 2: mes = "Fevereiro"; break;
+                case 3: mes = "Março"; break;
+                case 4: mes = "Abril"; break;
+                case 5: mes = "Maio"; break;
+                case 6: mes = "Junho"; break;
+                case 7: mes = "Julho"; break;
+                case 8: mes = "Agosto"; break;
+                case 9: mes = "Setembro"; break;
+                case 10: mes = "Outubro"; break;
+                case 11: mes = "Novembro"; break;
+                case 12: mes = "Dezembro"; break;
+                default: break;
             }
 
-            cout << this->dia << " de " << mes << " de " << this->ano << " - " << this->hora << " horas, " << minuto << " minutos  e "<< this->segundo << " segundos" << endl; 
+            cout << this->dia << " de " << mes << " de " << this->ano << " - " 
+            << this->hora << " horas, " << minuto << " minutos  e "<< this->segundo << " segundos" << endl; 
         }
     };
 
@@ -208,12 +214,45 @@ namespace poo
         DataHorario data;
         static constexpr int TAM_MAX = 210;
         Pessoa* poltronas[TAM_MAX];
+
+        /**
+         * @param s recebe uma string no formato [A-O][1-14]
+         * 
+         * @return posição equivalente no vetor poltronas
+         */
+        int converte(string s) const 
+        {
+            int linha = s[0] - 'A'; // s[0] é a 1a letra da string [A-0]
+            // A função stoi converte de string para int.
+            // [stoi] string => int (substring formada apenas pela 2a letra)
+            int coluna = stoi(s.substr(1)) - 1;
+            return linha * 14 + coluna;
+        }
+
+
+        /**
+         * @param recebe um integer que corresponde a uma poltrona
+         * 
+         * @return posição equivalente em string no formato [A-O][1-14]
+         */
+        string convertePoltronaString(int pos) const 
+        {
+            char linha = 'A' + pos / 14;
+            int coluna = (pos % 14) + 1;
+            return string(1, linha) + to_string(coluna);
+        }
+
+
     public:
-        Sessao(string nome, DataHorario& data) : nome(nome), data(data) {
+        Sessao(string nome, DataHorario& data) : nome(nome), data(data) 
+        {
             for (int i = 0; i < TAM_MAX; i++) poltronas[i] = nullptr;
         };
 
-        ~Sessao() {};
+        ~Sessao() 
+        {
+            for (int i = 0; i < TAM_MAX; ++i) delete poltronas[i]; 
+        };
 
         bool verifica(string poltrona) const 
         {
@@ -222,7 +261,8 @@ namespace poo
             return poltronas[pos] != nullptr;
         }
 
-        string proximoLivre() {
+        string proximoLivre() 
+        {
             for (int i = 0; i < TAM_MAX; i++) {
                 if (poltronas[i] == nullptr) {
                     return convertePoltronaString(i);
@@ -233,7 +273,8 @@ namespace poo
 
         bool ocupa(string poltrona, Pessoa& pessoa) 
         {
-            if (verifica(poltrona))  {
+            if (verifica(poltrona))  
+            {
                 cout << "Poltrona ocupada." << endl;
                 return false;
             }
@@ -248,22 +289,6 @@ namespace poo
             if (!verifica(poltrona)) return false;
             int pos = converte(poltrona);
             poltronas[pos] = nullptr;
-        }
-
-        int converte(string& s) const 
-        {
-            //Considere uma poltrona (string no formato [A-O][1-14])
-            int linha = s[0] - 'A'; // s[0] é a 1a letra da string [A-0]
-            // A função stoi converte de string para int.
-            // [stoi] string => int (substring formada apenas pela 2a letra)
-            int coluna = stoi(s.substr(1)) - 1;
-            return linha * 14 + coluna;
-        }
-
-        string convertePoltronaString(int pos) const {
-            char linha = 'A' + pos / 14;
-            int coluna = (pos % 14) + 1;
-            return string(1, linha) + to_string(coluna);
         }
 
         int vagas() const 
@@ -298,29 +323,3 @@ namespace poo
     };
     
 }
-
-
-//                                ._                             
-//                               |* ;                            
-//             `*-.              |"":                            
-//              \  \             |""                             
-//               .  \            |   :                           
-//               `   \           |                               
-//                \   \          |    ;               +.         
-//                 .   \         |                   *._`-.      
-//                 `    \        |     :          .-*'  `. `.    
-//                 _\    \.__..--**--...L_   _.-*'      .'`*'    
-//                /  `*-._\   -.       .-*"*+._       .'         
-//               :        ``*-._*.     \      _J.   .'           
-//           .-*'`*-.       ;     `.    \    /   `.'             
-//       .-*'  _.-*'.     .-'       `-.  `-.:   _.'`-.           
-//    +*' _.-*'      `..-'             `*-. `**'      `-.        
-//     `*'          .-'      ._            `*-._         `.      
-//               .-'         `.`-.____..+-**""'         .*"`.    
-//          ._.-'          _.-*'':$$$;._$              /     `.  
-//       .-'  `.      _.-*' `*-.__      `"**--..__    :        `.
-// .'..-'       \_.-*'                            `"**--..___.-*'
-// `. `.    _.-*'                                                
-//   `. `:*'                                                     
-//     `. `.                                                     
-//       `*
