@@ -92,7 +92,8 @@ Racional Racional::operator+(const Racional& r) const
     return Racional(novoNumerador, novoDenominador);
 }
 
-Racional Racional::operator-(const Racional& r) const {
+Racional Racional::operator-(const Racional& r) const 
+{
     int novoNumerador = this->numerador * r.denominador - this->denominador * r.numerador;
     int novoDenominador = this->denominador * r.denominador;
     return Racional(novoNumerador, novoDenominador);
