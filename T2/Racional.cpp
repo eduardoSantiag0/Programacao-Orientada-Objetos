@@ -18,7 +18,6 @@ Racional::Racional(int numerador, int denominador)
 
     if (this->denominador < 0) {
         this->numerador = -this->numerador;
-        this->denominador = -this->denominador;
     }
 
     this->valor = static_cast<double>(this->numerador) / this->denominador;

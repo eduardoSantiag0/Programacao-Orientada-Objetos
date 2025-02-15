@@ -1,0 +1,7 @@
+2 e-books foram cadastrados
+3 jogos foram cadastrados
+[EBOOK],O Morro dos Ventos Uivantes,30,1885,Emily Bronte
+[EBOOK],Crime e Castigo,40,1865,Fyodor Dostoyevsky
+[JOGO],Elden Ring,150,1990,2
+[JOGO],God of War,200,2021,2
+[JOGO],Astro Bot,440,2024,0

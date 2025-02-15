@@ -12,6 +12,7 @@ private:
     int numerador;
     int denominador;
     double valor;
+    // int valor;
 
     static int mdc ( int a, int b );
 
